@@ -8,6 +8,8 @@ public abstract class PlayerBaseState
 
     public abstract void Update(PlayerController player);
 
+    public abstract void FixedUpdate(PlayerController player);
+
     public abstract void OnCollisionEnter(PlayerController player);
 
     public abstract void OnTriggerExit(PlayerController player);

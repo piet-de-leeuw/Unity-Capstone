@@ -6,7 +6,7 @@ public class PlayerGetHitState : PlayerBaseState
 {
     public override void EnterState(PlayerController player)
     {
-        
+        player.SetAnimation("getHit");
     }
 
     public override void OnCollisionEnter(PlayerController player)
@@ -23,4 +23,9 @@ public class PlayerGetHitState : PlayerBaseState
     {
         
     }
+    public override void FixedUpdate(PlayerController player)
+    {
+
+    }
+
 }

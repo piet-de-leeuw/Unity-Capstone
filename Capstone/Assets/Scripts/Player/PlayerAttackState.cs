@@ -6,7 +6,8 @@ public class PlayerAttackState : PlayerBaseState
 {
     public override void EnterState(PlayerController player)
     {
-
+        Debug.Log("Attack");
+        player.SetAnimation("attack");
     }
 
     public override void OnCollisionEnter(PlayerController player)
@@ -23,6 +24,9 @@ public class PlayerAttackState : PlayerBaseState
     {
         
     }
+    public override void FixedUpdate(PlayerController player)
+    {
 
+    }
 
 }
