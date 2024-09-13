@@ -6,13 +6,18 @@ public class PlayerIdleState : PlayerBaseState
 {
     public override void EnterState(PlayerController player)
     {
-
+        Debug.Log("Idle");
         player.SetAnimation("idle");
     }
 
-    public override void OnCollisionEnter(PlayerController player)
+    public override void OnCollisionEnter(PlayerController player, Collision collision)
     {
  
+    }
+
+    public override void OnTriggerEnter(PlayerController player)
+    {
+
     }
 
     public override void OnTriggerExit(PlayerController player)
@@ -22,7 +27,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void Update(PlayerController player)
     {
-        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) { player.SetState(player.RunState); }
+        if (Input.GetButton("Vertical")) { player.SetState(player.RunState); }
         if (Input.GetKeyDown(KeyCode.Space)) {  player.SetState(player.JumpState); }
         
     }

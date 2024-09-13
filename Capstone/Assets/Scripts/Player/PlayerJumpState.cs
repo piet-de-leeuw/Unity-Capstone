@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpState : PlayerRunState
+public class PlayerJumpState : PlayerBaseRunState
 {
+    float highestPoint;
+    float currentHeight;
     public override void EnterState(PlayerController player)
     {
         player.SetAnimation("jump");
         player.Rigidbody.AddForce(Vector3.up * player.jumpForce);
+        highestPoint = 0f;
+        currentHeight = 0f;
     }
 
-    public override void OnCollisionEnter(PlayerController player)
+    public override void OnCollisionEnter(PlayerController player, Collision collision)
     {
-        player.SetAnimation("hitGround");
-        if (base.moveDirection != Vector3.zero) { player.SetState(player.RunState); }
-        else { player.SetState(player.IdleState); }
+
+    }
+
+    public override void OnTriggerEnter(PlayerController player)
+    {
+
     }
 
     public override void OnTriggerExit(PlayerController player)
@@ -24,13 +31,19 @@ public class PlayerJumpState : PlayerRunState
 
     public override void Update(PlayerController player)
     {
-        base.Move(player, player.runSpeed, player.jumpRotationSpeed);
+        
     }
 
     public override void FixedUpdate(PlayerController player)
     {
-        float jumpBlend = player.Rigidbody.velocity.y;
-        player.SetAnimationBlend("jumpBlend", jumpBlend);
+        base.Move(player, player.runSpeed, player.jumpRotationSpeed);
+
+        highestPoint = player.Rigidbody.velocity.y;
+
+        if (highestPoint <= currentHeight) { player.SetState(player.FallState); }
+        
+        if (highestPoint > currentHeight) { currentHeight = highestPoint; }
+
     }
 
 }

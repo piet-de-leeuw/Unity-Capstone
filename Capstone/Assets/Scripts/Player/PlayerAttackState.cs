@@ -10,7 +10,11 @@ public class PlayerAttackState : PlayerBaseState
         player.SetAnimation("attack");
     }
 
-    public override void OnCollisionEnter(PlayerController player)
+    public override void OnCollisionEnter(PlayerController player, Collision collision)
+    {
+
+    }
+    public override void OnTriggerEnter(PlayerController player)
     {
 
     }

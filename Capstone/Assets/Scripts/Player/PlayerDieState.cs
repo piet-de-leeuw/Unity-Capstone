@@ -10,9 +10,14 @@ public class PlayerDieState : PlayerBaseState
     }
 
 
-    public override void OnCollisionEnter(PlayerController player)
+    public override void OnCollisionEnter(PlayerController player, Collision collision)
     {
         
+    }
+
+    public override void OnTriggerEnter(PlayerController player)
+    {
+
     }
 
     public override void OnTriggerExit(PlayerController player)
