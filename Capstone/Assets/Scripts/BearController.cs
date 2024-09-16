@@ -75,9 +75,4 @@ public class BearController : MonoBehaviour
 
     }
 
-    void DealDamage()
-    {
-
-    }
-
 }
