@@ -31,6 +31,7 @@ public class PlayerBaseRunState : PlayerBaseState
     public override void Update(PlayerController player)
     {
         MoveInput(player, player.runRotationSpeed);
+        Debug.Log(Input.GetAxis("Vertical"));
 
     }
 

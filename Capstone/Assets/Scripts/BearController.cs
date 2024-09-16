@@ -5,36 +5,37 @@ using UnityEngine.AI;
 
 public class BearController : MonoBehaviour
 {
+    
     [SerializeField] Transform homeBase;
     [SerializeField] Transform target;
 
     [SerializeField] float homebaseStopDistance = 2f;
     [SerializeField] float chaseRange = 5f;
-    [SerializeField] float stopingDistance = 2f;
+    [SerializeField] float stopingDistance = 3f;
     [SerializeField] float healt = 15f;
 
     [SerializeField] bool ReturnsHome = true;
 
+    Transform rootTransform;
+
     NavMeshAgent agent;
     Animator animator;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        rootTransform = transform.Find("Armature");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float distanceToTarged = Vector3.Distance(transform.position, target.position);
+        float distanceToTarged = Vector3.Distance(rootTransform.position, target.position);
         bool inChaseRanche = distanceToTarged <= chaseRange;
         bool inStopDictance = distanceToTarged <= stopingDistance;
 
-        float distanceToHomeBase = Vector3.Distance(transform.position, homeBase.position);
+        float distanceToHomeBase = Vector3.Distance(rootTransform.position, homeBase.position);
         bool inHomeBaseStopDistance = distanceToHomeBase <= homebaseStopDistance;
 
         if (inChaseRanche)
@@ -42,9 +43,16 @@ public class BearController : MonoBehaviour
             if (!inStopDictance) 
             {
                 agent.isStopped = false;
+                animator.SetBool("attack", false);
+                animator.SetBool("run", true);
                 agent.destination = target.position;
             }
-            else if (inStopDictance) { agent.isStopped = true; }
+            else if (inStopDictance) 
+            {
+                agent.isStopped = true;
+                animator.SetBool("attack", true);
+                
+            }
 
         }
         else
@@ -62,4 +70,6 @@ public class BearController : MonoBehaviour
         }
 
     }
+
+
 }

@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         // Don't use the SetState here. It will set the Idle animation but the animatercontroller already sets it by default.
         // It will cause a bug by transitioning (switching immediately back to idle after first transition.
         currendState = IdleState;
+        Debug.Log(currendState);
     }
 
     void Update()
