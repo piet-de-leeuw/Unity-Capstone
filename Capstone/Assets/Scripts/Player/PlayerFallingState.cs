@@ -32,6 +32,7 @@ public class PlayerFallingState : PlayerBaseRunState
 
     public override void OnTriggerEnter(PlayerController player)
     {
+        player.SetState(player.GetHitState);
 
     }
 

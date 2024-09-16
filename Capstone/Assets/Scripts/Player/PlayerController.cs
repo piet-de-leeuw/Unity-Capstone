@@ -14,10 +14,11 @@ public class PlayerController : MonoBehaviour
     public Rigidbody Rigidbody { get { return rbody; } }
     public SphereCollider feetCollider;
     public CapsuleCollider bodyCollider;
+    
+    [HideInInspector] public Health health;
     Animator animator;
-
-
     PlayerBaseState currendState;
+    
 
     // All possible states
     public readonly PlayerBaseState IdleState = new PlayerIdleState();
@@ -34,11 +35,11 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         feetCollider = GetComponent<SphereCollider>();
         bodyCollider = GetComponent<CapsuleCollider>();
+        health = GetComponent<Health>();
 
         // Don't use the SetState here. It will set the Idle animation but the animatercontroller already sets it by default.
         // It will cause a bug by transitioning (switching immediately back to idle after first transition.
         currendState = IdleState;
-        Debug.Log(currendState);
     }
 
     void Update()

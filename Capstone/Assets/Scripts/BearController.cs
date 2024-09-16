@@ -9,10 +9,10 @@ public class BearController : MonoBehaviour
     [SerializeField] Transform homeBase;
     [SerializeField] Transform target;
 
-    [SerializeField] float homebaseStopDistance = 2f;
-    [SerializeField] float chaseRange = 5f;
-    [SerializeField] float stopingDistance = 3f;
-    [SerializeField] float healt = 15f;
+    [SerializeField] float homebaseStopDistance = 4f;
+    [SerializeField] float ChaseRange = 17f;
+    [SerializeField] float AttackRange = 2.4f;
+    
 
     [SerializeField] bool ReturnsHome = true;
 
@@ -32,26 +32,30 @@ public class BearController : MonoBehaviour
     void Update()
     {
         float distanceToTarged = Vector3.Distance(rootTransform.position, target.position);
-        bool inChaseRanche = distanceToTarged <= chaseRange;
-        bool inStopDictance = distanceToTarged <= stopingDistance;
+        bool inChaseRange = distanceToTarged <= ChaseRange;
+        bool inAttackRange = distanceToTarged <= AttackRange;
 
         float distanceToHomeBase = Vector3.Distance(rootTransform.position, homeBase.position);
         bool inHomeBaseStopDistance = distanceToHomeBase <= homebaseStopDistance;
 
-        if (inChaseRanche)
+
+        if (inChaseRange)
         {
-            if (!inStopDictance) 
+            if (!inAttackRange)
             {
+
                 agent.isStopped = false;
                 animator.SetBool("attack", false);
                 animator.SetBool("run", true);
                 agent.destination = target.position;
             }
-            else if (inStopDictance) 
+            else if (inAttackRange)
             {
+
+                agent.velocity = Vector3.zero;
                 agent.isStopped = true;
                 animator.SetBool("attack", true);
-                
+
             }
 
         }
@@ -71,5 +75,9 @@ public class BearController : MonoBehaviour
 
     }
 
+    void DealDamage()
+    {
+
+    }
 
 }

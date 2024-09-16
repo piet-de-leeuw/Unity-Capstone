@@ -7,7 +7,6 @@ public class PlayerRunState : PlayerBaseRunState
 {
     public override void EnterState(PlayerController player)
     {
-        Debug.Log("run");
         base.EnterState(player);
         player.SetAnimation("run");
     }
@@ -25,6 +24,7 @@ public class PlayerRunState : PlayerBaseRunState
     public override void OnTriggerEnter(PlayerController player)
     {
         base.OnTriggerEnter(player);
+        player.SetState(player.GetHitState);
     }
 
     public override void OnTriggerExit(PlayerController player)

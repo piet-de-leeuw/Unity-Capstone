@@ -21,7 +21,7 @@ public class PlayerJumpState : PlayerBaseRunState
 
     public override void OnTriggerEnter(PlayerController player)
     {
-
+        player.SetState(player.GetHitState);
     }
 
     public override void OnTriggerExit(PlayerController player)

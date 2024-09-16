@@ -6,7 +6,6 @@ public class PlayerAttackState : PlayerBaseState
 {
     public override void EnterState(PlayerController player)
     {
-        Debug.Log("Attack");
         player.SetAnimation("attack");
     }
 
@@ -21,6 +20,7 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void OnTriggerExit(PlayerController player)
     {
+        player.SetState(player.GetHitState);
 
     }
 

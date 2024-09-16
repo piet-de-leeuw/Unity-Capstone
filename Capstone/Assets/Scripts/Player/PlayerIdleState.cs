@@ -6,7 +6,6 @@ public class PlayerIdleState : PlayerBaseState
 {
     public override void EnterState(PlayerController player)
     {
-        Debug.Log("Idle");
         player.SetAnimation("idle");
     }
 
@@ -22,13 +21,13 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void OnTriggerExit(PlayerController player)
     {
+        player.SetState(player.GetHitState);
 
     }
 
     public override void Update(PlayerController player)
     {
-        Debug.Log("IdleStateUpdate");
-        if (Input.GetButton("Vertical")) { player.SetState(player.RunState); Debug.Log("ToRunState"); }
+        if (Input.GetButton("Vertical")) { player.SetState(player.RunState);}
         if (Input.GetKeyDown(KeyCode.Space)) {  player.SetState(player.JumpState); }
         
     }
