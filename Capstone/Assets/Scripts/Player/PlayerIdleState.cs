@@ -28,7 +28,9 @@ public class PlayerIdleState : PlayerBaseState
     public override void Update(PlayerController player)
     {
         if (Input.GetButton("Vertical")) { player.SetState(player.RunState);}
-        if (Input.GetKeyDown(KeyCode.Space)) {  player.SetState(player.JumpState); }
+        else if (Input.GetKeyDown(KeyCode.Space)) {  player.SetState(player.JumpState); }
+        else if (Input.GetMouseButtonUp(0)) { player.SetState(player.AttackState);}
+
         
     }
 

@@ -37,6 +37,7 @@ public class PlayerRunState : PlayerBaseRunState
         base.Update(player);
 
         if (Input.GetKeyDown(KeyCode.Space)) { player.SetState(player.JumpState); }
-        if (moveDirection == Vector3.zero) { player.SetState(player.IdleState); }
+        else if (moveDirection == Vector3.zero) { player.SetState(player.IdleState); }
+        else if (Input.GetMouseButtonUp(0)) { player.SetState(player.AttackState); }
     }
 }
