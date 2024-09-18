@@ -32,7 +32,13 @@ public class Health : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (isDeath || !other.CompareTag(weaponTag)) { return; }
+        if (isDeath) { return; }
+
+        if (other.CompareTag("deathPit")) 
+        { 
+            isDeath = true;
+            thisController.Die();
+        }
 
         if (!other.CompareTag(weaponTag)) { return; }
         if (other.CompareTag(weaponTag))
