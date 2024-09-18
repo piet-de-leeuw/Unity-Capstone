@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BearController : MonoBehaviour
+public class BearController : MonoBehaviour, IController
 {
     
     [SerializeField] Transform homeBase;
@@ -21,6 +21,13 @@ public class BearController : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
 
+    bool isDeath = false;
+    bool getHit = false;
+
+    int weaponDamage = 20;
+    public int WeaponDamage {  get { return  weaponDamage; } }
+
+
     void Start()
     {
         rootTransform = transform.Find("Armature");
@@ -31,6 +38,9 @@ public class BearController : MonoBehaviour
 
     void Update()
     {
+        getHit = animator.GetCurrentAnimatorStateInfo(0).IsName("Bear_GetHit");
+        if (isDeath || getHit) { return; }
+        
         float distanceToTarged = Vector3.Distance(rootTransform.position, target.position);
         bool inChaseRange = distanceToTarged <= ChaseRange;
         bool inAttackRange = distanceToTarged <= AttackRange;
@@ -75,4 +85,15 @@ public class BearController : MonoBehaviour
 
     }
 
+
+    public void Die()
+    {
+        isDeath = true;
+        animator.SetTrigger("die");
+    }
+
+    public void GetHit()
+    {
+        animator.SetTrigger("getHit");
+    }
 }

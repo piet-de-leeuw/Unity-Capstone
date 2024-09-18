@@ -22,7 +22,7 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void OnTriggerExit(PlayerController player)
     {
-        player.SetState(player.GetHitState);
+
 
     }
 

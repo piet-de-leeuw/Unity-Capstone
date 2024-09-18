@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IController
 {
     public float runSpeed = 10f;
     public float runRotationSpeed = 160f;
@@ -12,10 +12,14 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rbody;
     public Rigidbody Rigidbody { get { return rbody; } }
+
+    private int weaponDamage = 25;
+    public int WeaponDamage { get { return weaponDamage; } }
+
+
     public SphereCollider feetCollider;
     public CapsuleCollider bodyCollider;
     
-    [HideInInspector] public Health health;
     Animator animator;
     PlayerBaseState currendState;
     
@@ -35,7 +39,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         feetCollider = GetComponent<SphereCollider>();
         bodyCollider = GetComponent<CapsuleCollider>();
-        health = GetComponent<Health>();
 
         // Don't use the SetState here. It will set the Idle animation but the animatercontroller already sets it by default.
         // It will cause a bug by transitioning (switching immediately back to idle after first transition.
@@ -82,4 +85,13 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger(trigger);
     }
 
+    public void GetHit()
+    {
+        SetState(GetHitState);
+    }
+
+    public void Die()
+    {
+        SetState(DieState);
+    }
 }

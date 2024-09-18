@@ -24,7 +24,6 @@ public class PlayerRunState : PlayerBaseRunState
     public override void OnTriggerEnter(PlayerController player)
     {
         base.OnTriggerEnter(player);
-        player.SetState(player.GetHitState);
     }
 
     public override void OnTriggerExit(PlayerController player)

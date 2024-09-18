@@ -8,7 +8,6 @@ public class PlayerGetHitState : PlayerBaseState
     public override void EnterState(PlayerController player)
     {
         player.SetAnimation("getHit");
-        player.health.GetDamage(20);
         player.Rigidbody.AddRelativeForce(-Vector3.forward * hitForce);
     }
 
@@ -28,8 +27,8 @@ public class PlayerGetHitState : PlayerBaseState
 
     public override void Update(PlayerController player)
     {
-        if (player.health.health <= 0) { player.SetState(player.DieState); }
-        else if (Input.GetButton("Vertical")) { player.SetState(player.RunState); }
+
+        if (Input.GetButton("Vertical")) { player.SetState(player.RunState); }
         else { player.SetState(player.IdleState); }
     }
     public override void FixedUpdate(PlayerController player)
