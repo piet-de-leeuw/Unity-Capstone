@@ -12,9 +12,10 @@ public class BearController : MonoBehaviour, IController
     [SerializeField] float homebaseStopDistance = 4f;
     [SerializeField] float ChaseRange = 17f;
     [SerializeField] float AttackRange = 2.4f;
-    
 
     [SerializeField] bool ReturnsHome = true;
+    
+    public bool inAttackRange = false;
 
     Transform rootTransform;
 
@@ -33,7 +34,6 @@ public class BearController : MonoBehaviour, IController
         rootTransform = transform.Find("Armature");
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
     }
 
     void Update()
@@ -43,17 +43,15 @@ public class BearController : MonoBehaviour, IController
         
         float distanceToTarged = Vector3.Distance(rootTransform.position, target.position);
         bool inChaseRange = distanceToTarged <= ChaseRange;
-        bool inAttackRange = distanceToTarged <= AttackRange;
+        //bool inAttackRange = distanceToTarged <= AttackRange;
 
         float distanceToHomeBase = Vector3.Distance(rootTransform.position, homeBase.position);
         bool inHomeBaseStopDistance = distanceToHomeBase <= homebaseStopDistance;
-
 
         if (inChaseRange)
         {
             if (!inAttackRange)
             {
-
                 agent.isStopped = false;
                 animator.SetBool("attack", false);
                 animator.SetBool("run", true);
@@ -61,9 +59,9 @@ public class BearController : MonoBehaviour, IController
             }
             else if (inAttackRange)
             {
-
                 agent.velocity = Vector3.zero;
-                agent.isStopped = true;
+                //agent.isStopped = true;
+
                 animator.SetBool("attack", true);
 
             }

@@ -7,6 +7,7 @@ TagManager:
   - EnemyWeapon
   - PlayerWeapon
   - deathPit
+  - AttackBox
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - environment
   - weapon
   - HitBox
-  - 
+  - AttackBox
   - 
   - 
   - 

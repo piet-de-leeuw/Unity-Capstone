@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IController
 {
+    [SerializeField] ColliderEn_Disable weaponColliderEnDisabled;
+
     public float runSpeed = 10f;
     public float runRotationSpeed = 160f;
     public float jumpForce = 300f;
@@ -15,7 +17,6 @@ public class PlayerController : MonoBehaviour, IController
 
     private int weaponDamage = 25;
     public int WeaponDamage { get { return weaponDamage; } }
-
 
     public SphereCollider feetCollider;
     public CapsuleCollider bodyCollider;
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour, IController
         animator.SetTrigger(trigger);
     }
 
+    // Are called from Health.cs component
     public void GetHit()
     {
         SetState(GetHitState);
@@ -94,4 +96,10 @@ public class PlayerController : MonoBehaviour, IController
     {
         SetState(DieState);
     }
+
+    // Are called from MeeleeAttack animation
+
+    void Enabled() { weaponColliderEnDisabled.ColliderEnable(); }
+
+    void Disabled() { weaponColliderEnDisabled.ColliderDisable(); }
 }

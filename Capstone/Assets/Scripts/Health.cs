@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 {
     IController thisController;
     public int health = 50;
-    bool isDeath = false;
+    public bool isDeath = false;
     //Assign in the inspector the tag of the Weapon/Object that is to be able to damage this gameObject.
     [SerializeField] string weaponTag = "";
 

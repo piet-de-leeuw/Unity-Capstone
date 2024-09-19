@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2103377065}
   - component: {fileID: 2103377066}
   m_Layer: 11
-  m_Name: HitBox
+  m_Name: PlayerHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4262,6 +4262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  isDeath: 0
   weaponTag: EnemyWeapon
 --- !u!114 &5283585304676685075
 MonoBehaviour:
