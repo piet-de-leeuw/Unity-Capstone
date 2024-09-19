@@ -8,6 +8,9 @@ TagManager:
   - PlayerWeapon
   - deathPit
   - AttackBox
+  - BurnPit
+  - HealthPowerUp
+  - Coin
   layers:
   - Default
   - TransparentFX

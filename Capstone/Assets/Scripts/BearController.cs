@@ -15,7 +15,7 @@ public class BearController : MonoBehaviour, IController
 
     [SerializeField] bool ReturnsHome = true;
     
-    public bool inAttackRange = false;
+    [HideInInspector] public bool inAttackRange = false;
 
     Transform rootTransform;
 
@@ -43,7 +43,6 @@ public class BearController : MonoBehaviour, IController
         
         float distanceToTarged = Vector3.Distance(rootTransform.position, target.position);
         bool inChaseRange = distanceToTarged <= ChaseRange;
-        //bool inAttackRange = distanceToTarged <= AttackRange;
 
         float distanceToHomeBase = Vector3.Distance(rootTransform.position, homeBase.position);
         bool inHomeBaseStopDistance = distanceToHomeBase <= homebaseStopDistance;
@@ -60,7 +59,6 @@ public class BearController : MonoBehaviour, IController
             else if (inAttackRange)
             {
                 agent.velocity = Vector3.zero;
-                //agent.isStopped = true;
 
                 animator.SetBool("attack", true);
 
@@ -76,7 +74,11 @@ public class BearController : MonoBehaviour, IController
                     agent.isStopped = false;
                     agent.destination = homeBase.position;
                 }
-                else if (inHomeBaseStopDistance) { agent.isStopped = true; }
+                else if (inHomeBaseStopDistance) 
+                {
+                    agent.isStopped = true;
+                    animator.SetBool("run", false);
+                }
             }
 
         }

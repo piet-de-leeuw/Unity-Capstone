@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerGetHitState : PlayerBaseState
 {
-    float hitForce = 200;
+    float hitForce = 250;
     public override void EnterState(PlayerController player)
     {
         player.SetAnimation("getHit");
-        player.Rigidbody.AddRelativeForce(-Vector3.forward * hitForce);
+        //player.Rigidbody.AddRelativeForce(-Vector3.forward * hitForce);
     }
 
     public override void OnCollisionEnter(PlayerController player, Collision collision)
