@@ -18,12 +18,13 @@ public class Health : MonoBehaviour
     {
         thisController = GetComponent<IController>();
         rBody = GetComponent<Rigidbody>();
+        
     }
 
     private void Update()
     {
         
-        if (isDeath) { return; }
+        if (isDeath) { health = 0; return; }
         if (health <= 0)
         {
             Debug.Log("die" + thisController);
