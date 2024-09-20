@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BearController : MonoBehaviour, IController, IAttackRange
+public class BlackBearController : MonoBehaviour, IController, IAttackRange
 {
-
     [SerializeField] Transform homeBase;
     [SerializeField] Transform target;
 
     [SerializeField] float homebaseStopDistance = 4f;
     [SerializeField] float ChaseRange = 17f;
-
 
     [SerializeField] bool ReturnsHome = true;
 
@@ -23,11 +21,13 @@ public class BearController : MonoBehaviour, IController, IAttackRange
     NavMeshAgent agent;
     Animator animator;
 
+    int hitCount = 0;
+
     bool isDeath = false;
     bool getHit = false;
 
-    int weaponDamage = 20;
-    public int WeaponDamage {  get { return  weaponDamage; } }
+    int weaponDamage = 40;
+    public int WeaponDamage { get { return weaponDamage; } }
 
 
     void Start()
@@ -41,7 +41,7 @@ public class BearController : MonoBehaviour, IController, IAttackRange
     {
         getHit = animator.GetCurrentAnimatorStateInfo(0).IsName("Bear_GetHit");
         if (isDeath || getHit) { return; }
-        
+
         float distanceToTarged = Vector3.Distance(rootTransform.position, target.position);
         bool inChaseRange = distanceToTarged <= ChaseRange;
 
@@ -75,7 +75,7 @@ public class BearController : MonoBehaviour, IController, IAttackRange
                     agent.isStopped = false;
                     agent.destination = homeBase.position;
                 }
-                else if (inHomeBaseStopDistance) 
+                else if (inHomeBaseStopDistance)
                 {
                     agent.isStopped = true;
                     animator.SetBool("run", false);
@@ -95,6 +95,11 @@ public class BearController : MonoBehaviour, IController, IAttackRange
 
     public void GetHit()
     {
-        animator.SetTrigger("getHit");
+        hitCount++;
+        if (hitCount >= 2)
+        {
+            hitCount = 0;
+            animator.SetTrigger("getHit");
+        }
     }
 }
