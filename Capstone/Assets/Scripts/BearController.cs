@@ -12,8 +12,8 @@ public class BearController : MonoBehaviour, IController, IAttackRange
     [SerializeField] float homebaseStopDistance = 4f;
     [SerializeField] float ChaseRange = 17f;
 
-
     [SerializeField] bool ReturnsHome = true;
+    public  bool isInactive = false;
 
     bool inAttackRange = false;
     public bool InAttackRange { get { return inAttackRange; } set { inAttackRange = value; } }
@@ -23,7 +23,7 @@ public class BearController : MonoBehaviour, IController, IAttackRange
     NavMeshAgent agent;
     Animator animator;
 
-    bool isDeath = false;
+    bool isDeath = false; 
     bool getHit = false;
 
     [SerializeField] int weaponDamage = 20;
@@ -39,6 +39,7 @@ public class BearController : MonoBehaviour, IController, IAttackRange
 
     void Update()
     {
+        if (isInactive) { return; }
         getHit = animator.GetCurrentAnimatorStateInfo(0).IsName("Bear_GetHit");
         if (isDeath || getHit) { return; }
         
