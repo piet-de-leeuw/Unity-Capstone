@@ -26,7 +26,7 @@ public class BlackBearController : MonoBehaviour, IController, IAttackRange
     bool isDeath = false;
     bool getHit = false;
 
-    int weaponDamage = 40;
+    [SerializeField] int weaponDamage = 40;
     public int WeaponDamage { get { return weaponDamage; } }
 
 

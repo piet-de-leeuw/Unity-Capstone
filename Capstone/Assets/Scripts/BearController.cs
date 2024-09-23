@@ -26,7 +26,7 @@ public class BearController : MonoBehaviour, IController, IAttackRange
     bool isDeath = false;
     bool getHit = false;
 
-    int weaponDamage = 20;
+    [SerializeField] int weaponDamage = 20;
     public int WeaponDamage {  get { return  weaponDamage; } }
 
 

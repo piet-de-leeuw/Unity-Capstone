@@ -341,6 +341,7 @@ MonoBehaviour:
   homebaseStopDistance: 4
   ChaseRange: 17
   ReturnsHome: 1
+  weaponDamage: 35
 --- !u!114 &2777515769772974803
 MonoBehaviour:
   m_ObjectHideFlags: 0
