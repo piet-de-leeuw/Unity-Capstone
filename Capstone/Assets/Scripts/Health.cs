@@ -23,12 +23,9 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        
         if (isDeath) { health = 0; return; }
         if (health <= 0)
         {
-            Debug.Log("die" + thisController);
-
             isDeath = true;
             thisController.Die();
         }
@@ -36,7 +33,6 @@ public class Health : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (isDeath) { return; }
 
         if (other.CompareTag("HealthPowerUp"))
