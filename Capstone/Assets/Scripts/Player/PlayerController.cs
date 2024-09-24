@@ -24,9 +24,11 @@ public class PlayerController : MonoBehaviour, IController
     public Collider bodyCollider;
 
     public GameObject sword;
-    public Animator animator;
+    [HideInInspector]  public Animator animator;
 
     Health health;
+    [SerializeField] Health blackBearBoss;
+    [SerializeField] Health bearBoss;
 
     PlayerBaseState currendState;
     
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour, IController
 
     void Update()
     {
+        if (health.isDeath) { GameObject.Find("SceneManager").GetComponent<LoadSceneManager>().LoadGameOver(); }
+        if (blackBearBoss.isDeath && bearBoss.isDeath) { GameObject.Find("SceneManager").GetComponent<LoadSceneManager>().LoadNextScene(3f); }
         currendState.Update(this);
     }
 
