@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IController
 {
     [SerializeField] ColliderEn_Disable weaponColliderEnDisabled;
+    public Transform groundCkeckOrigin;
+    public LayerMask groundCkeckLayerMask;
 
     public float runSpeed = 10f;
     public float runRotationSpeed = 160f;
@@ -19,9 +21,13 @@ public class PlayerController : MonoBehaviour, IController
     public int WeaponDamage { get { return weaponDamage; } }
 
     public SphereCollider feetCollider;
-    public CapsuleCollider bodyCollider;
-    
-    Animator animator;
+    public Collider bodyCollider;
+
+    public GameObject sword;
+    public Animator animator;
+
+    Health health;
+
     PlayerBaseState currendState;
     
 
@@ -40,6 +46,7 @@ public class PlayerController : MonoBehaviour, IController
         animator = GetComponent<Animator>();
         feetCollider = GetComponent<SphereCollider>();
         bodyCollider = GetComponent<CapsuleCollider>();
+        health = GetComponent<Health>();
 
         // Don't use the SetState here. It will set the Idle animation but the animatercontroller already sets it by default.
         // It will cause a bug by transitioning (switching immediately back to idle after first transition.
@@ -84,6 +91,11 @@ public class PlayerController : MonoBehaviour, IController
     public void SetAnimation(string trigger)
     {
         animator.SetTrigger(trigger);
+    }
+
+    public void SetAnimation(string trigger, bool value)
+    {
+        animator.SetBool(trigger, value);
     }
 
     // Are called from Health.cs component

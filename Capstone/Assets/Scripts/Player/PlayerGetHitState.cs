@@ -8,7 +8,7 @@ public class PlayerGetHitState : PlayerBaseState
     public override void EnterState(PlayerController player)
     {
         player.SetAnimation("getHit");
-        //player.Rigidbody.AddRelativeForce(-Vector3.forward * hitForce);
+
     }
 
     public override void OnCollisionEnter(PlayerController player, Collision collision)

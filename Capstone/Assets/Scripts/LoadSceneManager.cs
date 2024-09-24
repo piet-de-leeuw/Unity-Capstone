@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +27,12 @@ public class LoadSceneManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void LoadGameOver()
+    {
+        int gameOver = SceneManager.sceneCountInBuildSettings - 1;
+        StartCoroutine(LoadScene(gameOver));
     }
 
     public IEnumerator LoadScene(int NextScene)

@@ -9,7 +9,7 @@ public class PlayerJumpState : PlayerBaseRunState
     public override void EnterState(PlayerController player)
     {
         player.SetAnimation("jump");
-        player.Rigidbody.AddForce(Vector3.up * player.jumpForce);
+        player.Rigidbody.AddRelativeForce(Vector3.up * player.jumpForce);
         highestPoint = 0f;
         currentHeight = 0f;
     }
@@ -31,19 +31,19 @@ public class PlayerJumpState : PlayerBaseRunState
 
     public override void Update(PlayerController player)
     {
-        
+        base.Update(player);
     }
 
     public override void FixedUpdate(PlayerController player)
     {
-        base.Move(player, player.runSpeed, player.jumpRotationSpeed);
-
-        highestPoint = player.Rigidbody.velocity.y;
-
-        if (highestPoint <= currentHeight) { player.SetState(player.FallState); }
+        base.FixedUpdate(player);
+        
+        highestPoint = player.transform.position.y;
         
         if (highestPoint > currentHeight) { currentHeight = highestPoint; }
-
+        else if (highestPoint < currentHeight) { player.SetState(player.FallState); }
+        else { player.SetState(player.FallState); }
+        Debug.Log(highestPoint + " " + currentHeight );
     }
 
 }
