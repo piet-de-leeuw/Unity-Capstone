@@ -91,3 +91,43 @@ After that I tried my player in the environment. I found out that my Player move
 ![PlayerRunBase1.png](Images/Userstory-3/PlayerRunBase1.png)
 
 ## User-Story 4
+STORY: User would like collectibles and incentive to collect them added to the game.
+In this story you will add challenges to the level as well as an incentive for completing these challenges. The collectibles you add can be an item the player can pick up that increases their score or acts as a powerup of some kind. The obstacles can be the level itself, a trap to avoid, or even simple enemies to fight.
+This story will be complete when you have added necessary obstacles and collectibles to your game level.
+
+I started with a sword the player can pick up and that automatically equips. Picking it up also triggers a door to open. 
+
+![sword-pick-up.png](Images/Userstory-4/sword-pick-up.png)
+
+Then for the obstacle I decided to create an enemy in the form of a bear. I started with code to start and stop chasing the player if the bear is in a certain ranch, start attacking if close enough and to return to its home base (start position) if this option is selected (bool ReturnHome). 
+
+![BearController-ChaseFunctionality-part1.png](Images/Userstory-4/BearController-ChaseFunctionality-part1.png)
+
+![BearController-ChaseFunctionality-part2.png](Images/Userstory-4/BearController-ChaseFunctionality-part2.png)
+
+After that I setup a Health script so the attack of the bear can do damage to the player and so the player can die.
+
+![Health.png](Images/Userstory-4/Health.png)
+
+After that I implemented attack and refactored the health script so it can be used by enemy's as well. To do that I used an Interface so the health script can call the functions GetHit and Die in both the PlayerController and the BearController even thou both scripts work differently and are of other types.
+
+![IController.png](Images/Userstory-4/IController.png)
+
+![Health_refactored _part1.png](Images/Userstory-4/Health_refactored _part1.png)
+
+![Health_refactored _part2.png](Images/Userstory-4/Health_refactored _part2.png)
+
+<img src="Images/Userstory-4/weaponDamagePlayerController.png" width="45%"/> <img src="Images/Userstory-4/weaponDamageBearController.png" width="45%"/>
+<img src="Images/Userstory-4/ImplementationIControllerPlayer.png" width="45%"/> <img src="Images/Userstory-4/ImplementartionIControllerBear.png" width="45%"/>
+
+After I tuned combat so it feels right.
+Then I setup a DeathPit and BurnPits where the player dies or get hurt if he falls into it. 
+
+![death-and-burnPit.png](Images/Userstory-4/death-and-burnPit.png)
+
+After that I added a health power up and coins to raise the score.
+
+<img src="Images/Userstory-4/health-powerup.png" width="45%"/> <img src="Images/Userstory-4/coin.png" width="45%"/>
+
+
+
