@@ -26,7 +26,7 @@ namespace Player
             Move(player, player.runSpeed, player.runRotationSpeed);
         }
 
-        protected void MoveInput(PlayerController player, float rotationSpeed)
+        protected void MoveInput(PlayerController player)
         {
             float horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");

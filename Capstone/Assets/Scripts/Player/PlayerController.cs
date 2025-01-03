@@ -57,7 +57,7 @@ namespace Player
             currendState = IdleState;
 
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
 
         }
 
