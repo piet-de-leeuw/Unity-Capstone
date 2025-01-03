@@ -118,7 +118,7 @@ After that I implemented attack and refactored the health script so it can be us
 ![Health_refactored _part2.png](Images/Userstory-4/Health_refactored _part2.png)
 
 <img src="Images/Userstory-4/weaponDamagePlayerController.png" width="45%"/> <img src="Images/Userstory-4/weaponDamageBearController.png" width="45%"/>
-<img src="Images/Userstory-4/ImplementationIControllerPlayer.png" width="45%"/> <img src="Images/Userstory-4/ImplementartionIControllerBear.png" width="45%"/>
+<img src="Images/Userstory-4/ImplementationIControllerPlayer.png" width="45%"/> <img src="Images/Userstory-4/ImplementationIControllerBear.png" width="45%"/>
 
 After I tuned combat so it feels right.
 Then I setup a DeathPit and BurnPits where the player dies or get hurt if he falls into it. 
