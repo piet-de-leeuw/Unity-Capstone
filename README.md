@@ -136,5 +136,5 @@ This story will be complete when you can go from the Main Menu to the Game Level
 
 In this story I was tasked with rounding of the project. I created a win and lose conditions (You win when you slay the two giant bears and you lose when you lose all your health) with transitions to the victory and game over scenes. I cleaned up the code and test and fixed some little bugs.
 
-You can find all classes and scource code from this project [HERE](Capstone/Assets/Scripts)
+You can find all classes and scource code from this project [HERE](Capstone/Assets/Scripts) <rb>
 [Scrol Up](#unreal-engine-capstone)
