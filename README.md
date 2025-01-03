@@ -68,3 +68,26 @@ Update: after playing a little with my player in my environment I noticed that t
 
 ![PlayerBaseRunStateUpdate.png](Images/Userstory-2/PlayerBaseRunStateUpdate.png)
 
+## User-Story 3
+STORY: User would like the environment of the gameplay scene created.
+In this story, you will set up the environment of your gameplay scene. This can simply be objects with colliders added to the scene or you can utilize a TileMap and TileMap collider.
+This can be kept simple for now but should have enough there for you to test out game elements that will be added in later stories.
+This story will be complete when you have added the necessary gameplay area for the player to navigate.
+
+I started with creating a terrain modifying setting up the layout of the game, adding in some textures and some walls. I also thougt about where the player can and can’t go and started to use that in my layout. From there I Added in walls, pillars and details.
+
+![Environment.png](Images/Userstory-3/Environment.png)
+
+<img src="Images/Userstory-3/Environment1.png" width="45%"/> <img src="Images/Userstory-3/Environment2.1.png" width="45%"/>
+
+<img src="Images/Userstory-3/Environment3.png" width="45%"/> <img src="Images/Userstory-3/Environment8.png" width="45%"/>
+
+![Environment6.png](Images/Userstory-3/Environment6.png)
+
+After that I tried my player in the environment. I found out that my Player movement didn’t work really well with collision and that jumping didn’t feel good either so I decided to spent more time on the player movement. Rewriting the whole PlayerBaseRunState so it works with the Unity physics system and not against it. I rewrote jump to use Physics.Raycast for checking if we are on the ground, instead of collision detection because it was to much in conflict with other colliders on the player that collided. After that the player movement felt way better and it fixed the problems I hat with collision.
+
+![PlayerRunBase.png](Images/Userstory-3/PlayerRunBase.png)
+
+![PlayerRunBase1.png](Images/Userstory-3/PlayerRunBase1.png)
+
+## User-Story 4
