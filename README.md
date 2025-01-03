@@ -1,4 +1,4 @@
-# Unreal-Engine-Capstone
+# Unity-Capstone
 In this project I present the game that I made as Capstone Project for the C# and Unity Course from [The Tech Academy](https://www.learncodinganywhere.com/) Game Developer Boot Camp.
 The Project was setup to stimulate a real job project as much as possible. Therefor I was given tasks in the form of user storys.
 
@@ -137,4 +137,4 @@ This story will be complete when you can go from the Main Menu to the Game Level
 In this story I was tasked with rounding of the project. I created a win and lose conditions (You win when you slay the two giant bears and you lose when you lose all your health) with transitions to the victory and game over scenes. I cleaned up the code and test and fixed some little bugs.
 
 You can find all classes and scource code from this project [HERE](Capstone/Assets/Scripts) <br>
-[Scrol Up](#unreal-engine-capstone)
+[Scrol Up](#unity-capstone)
