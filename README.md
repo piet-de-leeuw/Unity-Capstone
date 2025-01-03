@@ -129,5 +129,12 @@ After that I added a health power up and coins to raise the score.
 
 <img src="Images/Userstory-4/health-powerup.png" width="45%"/> <img src="Images/Userstory-4/coin.png" width="45%"/>
 
+## User-Story 5
+STORY: User would like a completed gameplay model.
+At this point you should have the environments set up, the player character moving around the level, and obstacles/collectibles for the player to avoid or gather. Now it is time to tie all these components together.
+This story will be complete when you can go from the Main Menu to the Game Level and then to the GameOver Screen where the user should be given the option to Quit or Play Again.
 
+In this story I was tasked with rounding of the project. I created a win and lose conditions (You win when you slay the two giant bears and you lose when you lose all your health) with transitions to the victory and game over scenes. I cleaned up the code and test and fixed some little bugs.
 
+You can find all classes and scource code from this project [HERE](Capstone/Assets/Scripts)
+[Scrol Up](#unreal-engine-capstone)
